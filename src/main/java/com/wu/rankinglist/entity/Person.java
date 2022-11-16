@@ -7,7 +7,7 @@ public class Person {
 
     private String name;
 
-    private Double score;
+    private Integer score;
 
 }
 
