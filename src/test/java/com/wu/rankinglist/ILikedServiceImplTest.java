@@ -57,10 +57,8 @@ public class ILikedServiceImplTest {
 
     @Test
     public void count() {
-
         Long count = iLikedService.count(BType.LIKED_ARTICLE, 1000);
         System.out.println(count);
-
     }
 
     @Test

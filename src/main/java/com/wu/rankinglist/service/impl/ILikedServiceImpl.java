@@ -68,12 +68,10 @@ public class ILikedServiceImpl implements ILikedService {
                 zSetOperations.incrementScore(reportKey, subject, 1);
             }
         }
-
     }
 
     /**
      * 查询单个主体（如文章）的获赞个数，如 id为 1的文章被点赞的数量
-     *
      * @param bType     业务类型
      * @param subjectId 被点赞主体ID
      * @return 点赞数量
@@ -88,13 +86,11 @@ public class ILikedServiceImpl implements ILikedService {
 
     @Override
     public Set<Object> getSubjectTopN(BType bType, Long top) {
-
         //获得点赞主体排行版
         Set<Object> set = zSetOperations.reverseRange(LikedUtil.getReportKey(bType), 0, top);
 
         //得到以bType开头的所有key组成的集合
         Set<String> keys = redisTemplate.keys(bType + ":*");
-
         if (set == null) return null;
         if (keys == null) return null;
         //给返回结果集设置 点赞数
@@ -108,7 +104,5 @@ public class ILikedServiceImpl implements ILikedService {
         }
         return set;
     }
-
-
 }
 
