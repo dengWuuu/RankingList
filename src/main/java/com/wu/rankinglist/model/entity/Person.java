@@ -1,4 +1,4 @@
-package com.wu.rankinglist.entity;
+package com.wu.rankinglist.model.entity;
 
 import lombok.Data;
 

@@ -1,9 +1,8 @@
 package com.wu.rankinglist.controller;
 
-import com.wu.rankinglist.entity.Person;
+import com.wu.rankinglist.model.entity.Person;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisZSetCommands;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -38,7 +37,9 @@ public class RankController {
         RedisZSetCommands.Range range = new RedisZSetCommands.Range();
 
         Set<String> strings = ZSet.reverseRangeByLex(range);
-        List<String> string = strings.stream().toList();
+        List<String> string = null;
+        if (strings != null) string = strings.stream().toList();
+        assert string != null;
         log.info(string.toString());
         return null;
     }
